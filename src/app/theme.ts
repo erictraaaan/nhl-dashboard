@@ -24,6 +24,18 @@ export const themeOptions: ThemeOptions = {
     },
     typography: {
         fontFamily: ruda.style.fontFamily,
+        h1: {
+            fontSize: '3rem', // Adjust this value to reduce the size of h1
+        },
+        h2: {
+            fontSize: '2.5rem', // Adjust this value to reduce the size of h2
+        },
+        h4: {
+            fontSize: '1.5rem', // Adjust this value to reduce the size of h4
+        }
+    },
+    shape: {
+        borderRadius: 5, // Change this value to your desired border radius
     },
 };
 
