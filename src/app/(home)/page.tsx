@@ -1,25 +1,28 @@
 import * as React from 'react';
-import { Box,  Card,  Container, Typography } from "@mui/material";
+import { Box, Card, Container, Typography } from "@mui/material";
+import { getScores } from '@/services/api';
+import Scorebug from '../components/Scorebug';
+import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+
+  // Get today's scores from the NHL API
+  // const scores = await getScoresToday();
+
+  const scores = await getScores("2025-01-05");
+  console.log(scores.currentDate);
+
+  // Get all the games
+  const games = scores.games;
+
+  console.log(games[0].homeTeam);
+
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'left',
-        }}
-      >
-        <Card sx={{ p: 2, textAlign: 'center', width:'100%', minHeight: '25rem'  }}>
-          <Typography variant="body1" component="p">
-            Built with Next.js
-            </Typography>
-        </Card>
-        
-      </Box>
-    </Container>
+    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
+      {games.map((game) => (
+        <Scorebug key={game.id} {...game} />
+      ))}
+    </Box>
+
   );
 }
