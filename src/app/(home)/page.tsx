@@ -25,13 +25,22 @@ export default async function Home() {
   }
 
   return (
-    <Grid2 {...gridProps} >
+    <>
+    {/* Date selection */}
+    <Box>
+      <Link href="/2025-01-04">Previous Day</Link>
+      <Link href="/2025-01-06">Next Day</Link>
+    </Box>
 
-      {games.map((game) => (
+      <Grid2 {...gridProps} >
+
+        {games.map((game) => (
           <Grid2 size={1} key={game.id}>
             <Gamecard {...game} />
           </Grid2>
-      ))}
-    </Grid2>
+        ))}
+      </Grid2>
+    </>
+
   );
 }

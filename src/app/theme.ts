@@ -32,6 +32,9 @@ export const themeOptions: ThemeOptions = {
         },
         h4: {
             fontSize: '1.5rem', // Adjust this value to reduce the size of h4
+        },
+        h5: {
+            fontSize: '1rem', // Adjust this value to reduce the size of h5
         }
     },
     shape: {

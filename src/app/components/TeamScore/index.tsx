@@ -26,8 +26,8 @@ export const TeamScore = (props: TeamScoreProps): JSX.Element => {
             <Image src={props.logo} alt={props.name} width={48} height={32} />
             {/* Name */}
             <Box {...nameBoxProps}>
-                <Typography>{props.name}</Typography>
-                <Typography >SOG: {props.shots}</Typography>
+                <Typography variant="h4">{props.name}</Typography>
+                <Typography variant="h5">SOG: {props.shots}</Typography>
             </Box>
             {/* Score */}
             <Typography sx={{fontSize: "24px"}}>{props.score}</Typography>
