@@ -1,7 +1,8 @@
 import { Game, Team } from "@/services/api/api.types";
-import { Box, BoxProps, Button, Card, CardProps, Grid2 } from "@mui/material";
+import { Box, BoxProps, Button, ButtonProps, Card, CardProps, Grid2 } from "@mui/material";
 import TeamScore from "../TeamScore";
 import Link from "next/link";
+import Goal from "../Goal";
 
 export const Gamecard = (game: Game): JSX.Element => {
 
@@ -25,13 +26,9 @@ export const Gamecard = (game: Game): JSX.Element => {
         }
     }
 
-    const linksBoxProps: BoxProps = {
-        sx: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        }
+    const buttonProps: ButtonProps = {
+        fullWidth: true,
+        variant: "outlined",
     }
 
     const teams: Team[] = [game.awayTeam, game.homeTeam];
@@ -51,22 +48,25 @@ export const Gamecard = (game: Game): JSX.Element => {
                 </Box>
                 {/* Goals */}
                 <Box>
+                    {game.goals.map((goal) => (
+                        <Goal key={goal.highlightClip} goal={goal} />
+                    ))}
 
                 </Box>
                 {/* Links */}
-                <Grid2 columns={3} container>
+                <Grid2 columns={3} container spacing={2} marginTop={2}>
                     <Grid2 size={1}>
-                        <Button fullWidth>
+                        <Button {...buttonProps}>
                             <Link target="__blank" href={`https://www.nhl.com${game.threeMinRecap}`}>
                                 Recap
                             </Link>
                         </Button>
                     </Grid2>
                     <Grid2 size={1}>
-                        <Button fullWidth>Condensed</Button>
+                        <Button {...buttonProps}>Condensed</Button>
                     </Grid2>
                     <Grid2 size={1}>
-                        <Button fullWidth>
+                        <Button {...buttonProps}>
                         <Link target="__blank" href={`https://www.nhl.com${game.gameCenterLink}`}>
                                 Gamecenter
                             </Link>
